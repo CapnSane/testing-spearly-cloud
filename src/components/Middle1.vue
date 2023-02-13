@@ -10,9 +10,6 @@
   display: flex;
   width: 100%;
 }
-.m1-img-wrap {
-  width: 100%;
-}
 .m1-img {
   width: inherit;
 }
