@@ -1,20 +1,20 @@
-<script lang="ts">
+<script>
 import * as axios from "axios";
 // import { upload } from './file-upload.service';
 
 const BASE_URL = "http://localhost:3001";
 
-function upload(formData: any) {
+function upload(formData) {
   const url = `${BASE_URL}/photos/upload`;
 
   return (
     axios
       .post(url, formData)
       // get data
-      .then((x: any) => x.data)
+      .then((x) => x.data)
       // add url field
-      .then((x: any) =>
-        x.map((file: any) => Object.assign({}, file, { url: `${BASE_URL}/images/${file.id}` })),
+      .then((x) =>
+        x.map((file) => Object.assign({}, file, { url: `${BASE_URL}/images/${file.id}` })),
       )
   );
 }
