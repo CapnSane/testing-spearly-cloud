@@ -1,9 +1,11 @@
-<script lang="ts">
+<script lang="js">
+
+  let stepFactor = 0.2;
+  let randomNum = (Math.floor(Math.random() * 6) + 1)*stepFactor;
+
 // export type Percentage = {
 //   percentage: number;
 // };
-
-let randomNum = Math.floor(Math.random() * 3) + 1;
 
 // export type Props = {
 //   fileName?: string;
@@ -25,7 +27,8 @@ export default {
   },
   created() {
     var interval = setInterval(() => {
-      if (this.percentage < 100) this.percentage += 0.1 * randomNum;
+      if (this.percentage > 100) this.percentage = 100;
+      else if (this.percentage < 100) this.percentage += randomNum;
       else clearInterval(interval);
     }, 5);
   },
@@ -52,16 +55,14 @@ export default {
 <style lang="scss" scoped>
 .pb__app {
   font-family: Arial, Helvetica, sans-serif;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px;
+  margin: 29px;
 }
 
 .container {
   text-align: right;
-  font-size: 8rem;
 }
 
 .loading-bar {
@@ -71,14 +72,12 @@ export default {
   border-radius: 4px;
   border: 1px solid #4797ff;
   overflow: hidden;
-  // border-bottom: 1px solid #ddd;
-  // box-shadow: inset 0 1px 2px rgba($color: #000, $alpha: 0.4), 0 -1px 1px #fff, 0 1px 0 #fff;
 
   .percentage {
     position: absolute;
     display: block;
     height: 100%;
-    border-radius: 4px;
+    // border-radius: 4px;
     background-color: #4797ff70;
     animation: animate-stripes 3s linear infinite;
   }
@@ -88,7 +87,7 @@ export default {
   color: #fff;
   font-size: 12px;
   margin: auto;
-  width: fit-content;
+  width: max-content;
   padding: 8px;
 }
 
